@@ -1,7 +1,6 @@
 # Combining the TXT files into one dataset
 
 import os
-
 import pandas as pd
 
 folder_path = "Datasets/babynames"
@@ -20,15 +19,13 @@ for file_name in os.listdir(folder_path):
         header = ["Name", "Sex", "Number"]  # The columns
 
         # read txt into a DataFrame
-
         df = pd.read_csv(file_path, names=header)
 
-        # Add a new coulmn 'Year'
-
+        # Add a new column 'Year'
         df["Year"] = year
 
         # Append DataFrame to the list
-
         frames.append(df)
+        
 data = pd.concat(frames, ignore_index=True)  # Combining all the dfs
-df.to_csv("names_1.csv", index=False)  # Export the df
+data.to_csv("names.csv", index=False)  # Export the df
